@@ -5,7 +5,8 @@ from multiprocessing import Pool, cpu_count
 
 
 os.makedirs("data", exist_ok=True)
-max_dr = 10
+max_d = 5
+max_r = 10
 max_n = 50
 
 
