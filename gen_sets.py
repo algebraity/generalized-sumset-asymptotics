@@ -5,7 +5,7 @@ from multiprocessing import Pool, cpu_count
 
 
 os.makedirs("data", exist_ok=True)
-max_d = 3
+max_d = 10
 max_r = 5
 max_n = 50
 
@@ -35,7 +35,7 @@ def compute_chunk_rows(n_chunk):
 
 def main():
     n_values = list(range(1, max_n+1))
-    num_cpus = 20
+    num_cpus = 40
     n_chunks = chunk_values(n_values, num_cpus)
 
     header = ["d", "r", "n", "|A|", "|A+A|"]
