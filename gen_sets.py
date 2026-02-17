@@ -19,13 +19,14 @@ def chunk_values(values, num_chunks):
 
 def compute_chunk_rows(n_chunk):
     rows = []
-    dr_values = range(2, max_dr)
+    d_values = range(2, max_d)
+    r_values = range(2, max_r)
     for n in n_chunk:
-        aps_for_n = {d: rand_ap(1, d, n) for d in dr_values}
-        gps_for_n = {r: rand_gp(1, r, n) for r in dr_values}
+        aps_for_n = {d: rand_ap(1, d, n) for d in d_values}
+        gps_for_n = {r: rand_gp(1, r, n) for r in r_values}
 
-        for d in dr_values:
-            for r in dr_values:
+        for d in d_values:
+            for r in r_values:
                 a_set = aps_for_n[d] * gps_for_n[r]
                 rows.append([d, r, n, a_set.cardinality, a_set.ads_cardinality])
         print(f"Process {os.getpid()} finished n={n}", flush=True)
