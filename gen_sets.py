@@ -5,9 +5,9 @@ from multiprocessing import Pool, cpu_count
 
 
 os.makedirs("data", exist_ok=True)
-max_d = 5
-max_r = 10
-max_n = 50
+max_d = 3
+max_r = 5
+max_n = 80
 
 
 def chunk_values(values, num_chunks):
@@ -19,7 +19,7 @@ def chunk_values(values, num_chunks):
 
 def compute_chunk_rows(n_chunk):
     rows = []
-    d_values = range(2, max_d)
+    d_values = range(1, max_d)
     r_values = range(2, max_r)
     for n in n_chunk:
         aps_for_n = {d: rand_ap(1, d, n) for d in d_values}
@@ -35,7 +35,7 @@ def compute_chunk_rows(n_chunk):
 
 def main():
     n_values = list(range(5, max_n))
-    num_cpus = cpu_count()
+    num_cpus = 20
     n_chunks = chunk_values(n_values, num_cpus)
 
     header = ["d", "r", "n", "|A|", "|A+A|"]
